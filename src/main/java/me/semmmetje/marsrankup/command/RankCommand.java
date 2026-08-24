@@ -5,7 +5,7 @@ import me.semmmetje.marsrankup.rank.RankDefinition;
 import me.semmmetje.marsrankup.rank.RankManager;
 import me.semmmetje.marsrankup.util.Text;
 import org.bukkit.Bukkit;
-import org.bukkit.command.BukkitCommand;
+import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
