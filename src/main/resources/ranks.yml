@@ -1,0 +1,83 @@
+# Number suffixes: 1k, 1.5m, 2b, 1t
+# Time: 30m, 1h, 2d, 1w, or combinations such as 1d12h.
+# Custom requirement operators: >=, <=, >, <, ==, !=
+
+ranks:
+  1:
+    display-name: "&#3bd9ff&lRank 1"
+    money-required: "1k"
+    playtime-required: "1h"
+    permissions-required: []
+    custom-requirements:
+      - "%vault_eco_balance% >= 1k"
+      - "%levelsplus_level% >= 2"
+
+    item:
+      slot: 20
+      material: IRON_INGOT
+      amount: 1
+      glow: false
+
+      claimed:
+        name: "&a&lRANK 1 &8• &aGECLAIMD"
+        lore:
+          - ""
+          - "&7Deze rank heb je al behaald."
+          - ""
+          - "&a✔ Claimed"
+
+      in-progress:
+        name: "&c&lRANK 1 &8• &cIN PROGRESS"
+        lore:
+          - ""
+          - "&7Saldo: %marsrankup_requirement_money_1%"
+          - "&7Speeltijd: %marsrankup_requirement_playtime_1%"
+          - "&7Custom requirements: %marsrankup_requirement_custom_1%"
+          - ""
+          - "&cNog niet klaar."
+
+      claimable:
+        name: "&e&lRANK 1 &8• &eCLICK TO CLAIM"
+        lore:
+          - ""
+          - "&aAlle requirements zijn behaald."
+          - "&eKlik om deze rank te claimen!"
+        glow: true
+        actions:
+          - "[SOUND] UI_BUTTON_CLICK 1 1.2"
+
+    rewards:
+      - "[CONSOLE] say %player% is nu rank 1!"
+      - "[CONSOLE] lp user %player% parent add rank1"
+      - "[MESSAGE] &aGefeliciteerd met Rank 1!"
+      - "[SOUND] UI_TOAST_CHALLENGE_COMPLETE 1 1"
+
+  2:
+    display-name: "&#f6d151&lRank 2"
+    money-required: "5k"
+    playtime-required: "1d"
+    permissions-required:
+      - "marsrankup.rank2.access"
+    custom-requirements:
+      - "%levelsplus_level% >= 5"
+
+    item:
+      slot: 22
+      material: GOLD_INGOT
+      claimed:
+        name: "&a&lRANK 2 &8• &aGECLAIMD"
+      in-progress:
+        name: "&c&lRANK 2 &8• &cIN PROGRESS"
+        lore:
+          - ""
+          - "&7Saldo: %marsrankup_requirement_money_2%"
+          - "&7Speeltijd: %marsrankup_requirement_playtime_2%"
+          - "&7Permissions: %marsrankup_requirement_permissions_2%"
+          - "&7Custom: %marsrankup_requirement_custom_2%"
+      claimable:
+        name: "&e&lRANK 2 &8• &eCLICK TO CLAIM"
+        glow: true
+
+    rewards:
+      - "[CONSOLE] lp user %player% parent add rank2"
+      - "[MESSAGE] &aRank 2 unlocked!"

@@ -1,0 +1,17 @@
+name: MarsRankup
+version: '${project.version}'
+main: me.semmmetje.marsrankup.MarsRankupPlugin
+api-version: '1.21'
+author: Semmmetje
+description: Fully configurable free rankup plugin with GUI, Vault and PlaceholderAPI support.
+softdepend:
+  - PlaceholderAPI
+  - Vault
+
+permissions:
+  marsrankup.use:
+    description: Allows opening and using the rankup menu.
+    default: true
+  marsrankup.admin:
+    description: Allows all MarsRankup admin subcommands.
+    default: op

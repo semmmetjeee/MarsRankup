@@ -1,0 +1,33 @@
+command:
+  name: "rankup"
+  aliases:
+    - "ranks"
+    - "rank"
+  permission: "marsrankup.use"
+
+settings:
+  default-gui: "ranks"
+  start-rank: 0
+  allow-skipping-ranks: false
+  withdraw-money-on-claim: true
+  close-gui-after-claim: false
+  refresh-gui-after-claim: true
+  untagged-rewards-as-console: true
+  debug: false
+
+messages:
+  prefix: "&#3bd9ff&lMarsRankup &8» &r"
+  no-permission: "&cJe hebt hier geen permissie voor."
+  player-only: "&cDit command kan alleen als speler gebruikt worden."
+  unknown-gui: "&cGUI &f%gui% &cbestaat niet."
+  max-rank: "&aJe hebt de hoogste rank al bereikt."
+  already-claimed: "&eJe hebt rank &f%rank% &eal geclaimd."
+  rank-claimed: "&aJe hebt rank &f%rank% &ageclaimd!"
+  requirements-not-met: "&cJe voldoet nog niet aan alle requirements voor rank &f%rank%&c."
+  wrong-rank-order: "&cJe moet eerst de vorige rank behalen. Je volgende rank is &f%next_rank%&c."
+  reload: "&aMarsRankup is volledig herladen."
+  invalid-rank: "&cRank &f%rank% &cbestaat niet."
+  invalid-number: "&cDit moet een geldig ranknummer zijn."
+  player-not-found: "&cSpeler niet gevonden."
+  rank-set: "&aRank van &f%player% &ais ingesteld op &f%rank%&a."
+  rank-reset: "&aRank van &f%player% &ais gereset naar &f%rank%&a."
