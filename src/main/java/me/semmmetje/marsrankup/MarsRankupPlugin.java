@@ -4,6 +4,7 @@ import me.semmmetje.marsrankup.command.DynamicCommandManager;
 import me.semmmetje.marsrankup.config.PlayerData;
 import me.semmmetje.marsrankup.gui.ActionExecutor;
 import me.semmmetje.marsrankup.gui.GuiManager;
+import me.semmmetje.marsrankup.license.LicenseManager;
 import me.semmmetje.marsrankup.rank.RankManager;
 import me.semmmetje.marsrankup.rank.RankPlaceholderExpansion;
 import me.semmmetje.marsrankup.rank.RequirementEvaluator;
@@ -12,9 +13,14 @@ import me.semmmetje.marsrankup.util.Text;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
+
 import java.io.File;
 
 public final class MarsRankupPlugin extends JavaPlugin {
+    private static final String PRODUCT_ID = "mars-rankup";
+    private static final String LICENSE_ENDPOINT = "https://mars-license-api.vanderlandsem8.workers.dev/api/license/validate";
+
+    private LicenseManager licenseManager;
     private PlayerData playerData;
     private VaultHook vault;
     private RequirementEvaluator requirements;
@@ -25,7 +31,21 @@ public final class MarsRankupPlugin extends JavaPlugin {
     private RankPlaceholderExpansion expansion;
 
     @Override
+    public void onLoad() {
+        licenseManager = new LicenseManager(this, PRODUCT_ID, LICENSE_ENDPOINT);
+        if (!licenseManager.validateBeforeEnable()) {
+            getLogger().severe("MarsRankup license validation failed. Normal configuration will not be created or loaded.");
+        }
+    }
+
+    @Override
     public void onEnable() {
+        if (licenseManager == null || !licenseManager.isValid()) {
+            getLogger().severe("MarsRankup has been disabled because its license is not valid.");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+
         saveDefaultConfig();
         saveResourceIfMissing("ranks.yml");
         saveResourceIfMissing("guis/ranks.yml");
@@ -46,7 +66,8 @@ public final class MarsRankupPlugin extends JavaPlugin {
             expansion.register();
         }
 
-        getLogger().info("MarsRankup " + getPluginMeta().getVersion() + " enabled.");
+        licenseManager.startMonitoring();
+        getLogger().info("MarsRankup " + getPluginMeta().getVersion() + " enabled with a valid license.");
     }
 
     @Override
