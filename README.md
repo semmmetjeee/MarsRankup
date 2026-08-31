@@ -1,13 +1,42 @@
 # MarsRankup
 
-Fully configurable Paper rankup plugin with YAML GUIs, Vault economy, PlaceholderAPI requirements, playtime requirements, permission requirements, state-based rank items and custom rewards.
+MarsRankup is a configurable Paper rankup plugin with YAML GUIs, Vault economy support, PlaceholderAPI requirements, playtime and permission requirements, state-based rank items and custom rewards.
 
 ## Requirements
 
 - Paper 1.21.x
 - Java 21
-- PlaceholderAPI (optional; required for placeholder requirements)
-- Vault + economy provider (optional; required for money-required)
+- PlaceholderAPI (optional; required for placeholder-based requirements)
+- Vault + an economy provider (optional; required for `money-required`)
+- A valid Mars Development license for the `mars-rankup` product
+
+## Licensing
+
+On the first start MarsRankup creates only:
+
+```text
+plugins/MarsRankup/license.yml
+```
+
+Paste your license key into:
+
+```yaml
+license-key: "MARS-..."
+```
+
+and restart the server. Normal configuration files are only created after successful license validation.
+
+The plugin validates against:
+
+```text
+https://mars-license-api.vanderlandsem8.workers.dev/api/license/validate
+```
+
+and re-checks the license every five minutes while running. A revoked, renewed, blocked, mismatched or globally disabled license disables MarsRankup on its next check. After three consecutive network verification failures the plugin also disables as a safety measure.
+
+Standard licenses are intended for two active server instances by default; the actual limit is controlled by the Mars Development license platform and can be changed by an administrator.
+
+> No distributed Java JAR can be literally impossible to patch. The authoritative license, instance and revocation state is kept server-side.
 
 ## Build
 
@@ -23,29 +52,7 @@ or:
 
 The jar is created as `target/MarsRankup-<version>.jar`.
 
-## Automatic releases
-
-Push a tag like:
-
-```bash
-git tag v1.0.0
-git push origin v1.0.0
-```
-
-`.github/workflows/release.yml` builds with Java 21, creates/updates the GitHub Release and uploads the jar. Normal pushes and pull requests are compiled by `.github/workflows/build.yml`.
-
-## Dynamic command
-
-```yaml
-command:
-  name: "rankup"
-  aliases:
-    - "ranks"
-    - "rank"
-  permission: "marsrankup.use"
-```
-
-Commands:
+## Commands
 
 ```text
 /rankup
@@ -59,13 +66,15 @@ Commands:
 
 Admin permission: `marsrankup.admin`.
 
-## Rank configuration
+## Configuration
 
-Players start at rank 0 by default. Rank 0 does not need to exist in `ranks.yml`.
+The bundled defaults are fully English and use an orange + silver theme. Main behavior is configured in `config.yml`; rank definitions live in `ranks.yml`; GUI files live under `guis/`.
+
+Players start at rank `0` by default. Rank `0` does not need to exist in `ranks.yml`.
 
 Supported money suffixes: `k`, `m`, `b`, `t`.
 
-Supported playtime suffixes: `s`, `m`, `h`, `d`, `w`; combinations like `1d12h` work.
+Supported playtime suffixes: `s`, `m`, `h`, `d`, `w`; combinations such as `1d12h` work.
 
 Custom requirements support `>=`, `<=`, `>`, `<`, `==`, `!=` after PlaceholderAPI resolution:
 
@@ -76,37 +85,11 @@ custom-requirements:
   - "%some_boolean_placeholder% == true"
 ```
 
-Each rank can have `claimed`, `in-progress` and `claimable` item states.
-
 ## GUIs
 
 Every `.yml` file under `plugins/MarsRankup/guis/` becomes a GUI.
 
-Supported GUI sections: `title`, `size`, `border`, `panes`, `decorations`, `items`.
-
-Both `slot` and `slots` are supported, including ranges such as `"0-8"`. Explicit `items:` override generated rank items.
-
-## Item builder
-
-Supported item keys include:
-
-```yaml
-material: DIAMOND
-amount: 1
-name: "&bExample"
-display_name: "&bExample"
-lore:
-  - "&7Line"
-custom-model-data: 123
-glow: true
-unbreakable: false
-item-flags:
-  - HIDE_ENCHANTS
-enchantments:
-  UNBREAKING: 1
-actions:
-  - "[SOUND] UI_BUTTON_CLICK 1 1"
-```
+Supported sections include `title`, `size`, `border`, `panes`, `decorations` and `items`. Both `slot` and `slots` are supported, including ranges such as `"0-8"`.
 
 ## Actions / rewards
 
@@ -145,4 +128,4 @@ Untagged reward strings are console commands by default.
 
 ## Colors
 
-Supports legacy `&` colors, `&#RRGGBB` and `<#RRGGBB:#RRGGBB>Gradient`.
+MarsRankup supports legacy `&` colors, `&#RRGGBB` hex colors and `<#RRGGBB:#RRGGBB>Gradient` syntax.
