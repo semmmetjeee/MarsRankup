@@ -9,6 +9,7 @@ import me.semmmetje.marsrankup.rank.RankManager;
 import me.semmmetje.marsrankup.rank.RankPlaceholderExpansion;
 import me.semmmetje.marsrankup.rank.RequirementEvaluator;
 import me.semmmetje.marsrankup.rank.VaultHook;
+import me.semmmetje.marsrankup.update.UpdateChecker;
 import me.semmmetje.marsrankup.util.Text;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
@@ -29,6 +30,7 @@ public final class MarsRankupPlugin extends JavaPlugin {
     private GuiManager guis;
     private DynamicCommandManager commands;
     private RankPlaceholderExpansion expansion;
+    private UpdateChecker updateChecker;
 
     @Override
     public void onLoad() {
@@ -67,6 +69,8 @@ public final class MarsRankupPlugin extends JavaPlugin {
         }
 
         licenseManager.startMonitoring();
+        updateChecker = new UpdateChecker(this);
+        updateChecker.start();
         getLogger().info("MarsRankup " + getPluginMeta().getVersion() + " enabled with a valid license.");
     }
 
