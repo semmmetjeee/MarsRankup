@@ -69,12 +69,12 @@ public final class RankCommand extends BukkitCommand {
                 Player player = requirePlayer(sender);
                 if (player == null) return true;
                 Integer next = plugin.ranks().next(player);
-                sender.sendMessage(Text.color("&#3bd9ff&lMarsRankup &8» &7Current: &f" + plugin.ranks().current(player) + " &8| &7Next: &f" + (next == null ? "MAX" : next)));
+                sender.sendMessage(Text.color("&#FF8A1F&lMarsRankup &8» &#8F98A3Current: &#BFC5CC" + plugin.ranks().current(player) + " &8| &#8F98A3Next: &#BFC5CC" + (next == null ? "MAX" : next)));
             }
             case "set" -> {
                 if (!admin(sender)) return true;
                 if (args.length < 3) {
-                    sender.sendMessage(Text.color("&cUsage: /" + label + " set <player> <rank>"));
+                    sender.sendMessage(Text.color("&#BFC5CCUsage: &#FF8A1F/" + label + " set <player> <rank>"));
                     return true;
                 }
 
@@ -96,7 +96,7 @@ public final class RankCommand extends BukkitCommand {
             case "reset" -> {
                 if (!admin(sender)) return true;
                 if (args.length < 2) {
-                    sender.sendMessage(Text.color("&cUsage: /" + label + " reset <player>"));
+                    sender.sendMessage(Text.color("&#BFC5CCUsage: &#FF8A1F/" + label + " reset <player>"));
                     return true;
                 }
 

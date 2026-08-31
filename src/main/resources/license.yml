@@ -1,0 +1,5 @@
+# MarsRankup license configuration
+# Paste the license key from your Mars Development account below.
+# The plugin will not create or load its normal configuration until this key is valid.
+
+license-key: "PUT-YOUR-LICENSE-HERE"
