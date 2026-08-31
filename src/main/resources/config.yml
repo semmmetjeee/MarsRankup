@@ -1,4 +1,10 @@
+# ============================================================
+# MarsRankup - Main Configuration
+# Theme: Orange + Silver
+# ============================================================
+
 command:
+  # Main command used to open the rank menu.
   name: "rankup"
   aliases:
     - "ranks"
@@ -6,28 +12,47 @@ command:
   permission: "marsrankup.use"
 
 settings:
+  # GUI opened by /rankup.
   default-gui: "ranks"
+
+  # Rank players have before claiming their first configured rank.
   start-rank: 0
+
+  # If false, players must claim ranks in order.
   allow-skipping-ranks: false
+
+  # Remove the configured money requirement when a rank is claimed.
   withdraw-money-on-claim: true
+
+  # Close the inventory after a successful claim.
   close-gui-after-claim: false
+
+  # Refresh the current rank GUI immediately after a successful claim.
   refresh-gui-after-claim: true
+
+  # Reward entries without an action prefix are executed as console commands.
   untagged-rewards-as-console: true
+
+  # Prints additional diagnostics to console.
   debug: false
 
 messages:
-  prefix: "&#3bd9ff&lMarsRankup &8» &r"
-  no-permission: "&cJe hebt hier geen permissie voor."
-  player-only: "&cDit command kan alleen als speler gebruikt worden."
-  unknown-gui: "&cGUI &f%gui% &cbestaat niet."
-  max-rank: "&aJe hebt de hoogste rank al bereikt."
-  already-claimed: "&eJe hebt rank &f%rank% &eal geclaimd."
-  rank-claimed: "&aJe hebt rank &f%rank% &ageclaimd!"
-  requirements-not-met: "&cJe voldoet nog niet aan alle requirements voor rank &f%rank%&c."
-  wrong-rank-order: "&cJe moet eerst de vorige rank behalen. Je volgende rank is &f%next_rank%&c."
-  reload: "&aMarsRankup is volledig herladen."
-  invalid-rank: "&cRank &f%rank% &cbestaat niet."
-  invalid-number: "&cDit moet een geldig ranknummer zijn."
-  player-not-found: "&cSpeler niet gevonden."
-  rank-set: "&aRank van &f%player% &ais ingesteld op &f%rank%&a."
-  rank-reset: "&aRank van &f%player% &ais gereset naar &f%rank%&a."
+  # Supports legacy colors, &#RRGGBB hex colors and plugin gradients.
+  prefix: "&#FF8A1F&lMarsRankup &8» &r"
+
+  no-permission: "&#C0C5CEYou do not have permission to use this."
+  player-only: "&#C0C5CEThis command can only be used by a player."
+  unknown-gui: "&#C0C5CEThe GUI &#FF8A1F%gui% &#C0C5CEdoes not exist."
+
+  max-rank: "&#C0C5CEYou have already reached the highest available rank."
+  already-claimed: "&#C0C5CERank &#FF8A1F%rank% &#C0C5CEhas already been claimed."
+  rank-claimed: "&#FF8A1FRank %rank% &#C0C5CEhas been claimed successfully!"
+  requirements-not-met: "&#C0C5CEYou have not completed every requirement for rank &#FF8A1F%rank%&#C0C5CE yet."
+  wrong-rank-order: "&#C0C5CEYou must claim the previous rank first. Your next rank is &#FF8A1F%next_rank%&#C0C5CE."
+
+  reload: "&#FF8A1FMarsRankup &#C0C5CEconfiguration has been reloaded."
+  invalid-rank: "&#C0C5CERank &#FF8A1F%rank% &#C0C5CEdoes not exist."
+  invalid-number: "&#C0C5CEPlease enter a valid rank number."
+  player-not-found: "&#C0C5CEThat player could not be found."
+  rank-set: "&#C0C5CEThe rank of &#FF8A1F%player% &#C0C5CEwas set to &#FF8A1F%rank%&#C0C5CE."
+  rank-reset: "&#C0C5CEThe rank of &#FF8A1F%player% &#C0C5CEwas reset to &#FF8A1F%rank%&#C0C5CE."
