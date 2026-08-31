@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - license-english-overhaul
   pull_request:
 
 permissions:
