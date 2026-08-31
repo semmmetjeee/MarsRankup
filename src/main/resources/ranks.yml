@@ -1,10 +1,14 @@
+# ============================================================
+# MarsRankup - Rank Definitions
+# Theme: Orange + Silver
+# ============================================================
 # Number suffixes: 1k, 1.5m, 2b, 1t
 # Time: 30m, 1h, 2d, 1w, or combinations such as 1d12h.
 # Custom requirement operators: >=, <=, >, <, ==, !=
 
 ranks:
   1:
-    display-name: "&#3bd9ff&lRank 1"
+    display-name: "&#FF8A1F&lBronze I"
     money-required: "1k"
     playtime-required: "1h"
     permissions-required: []
@@ -14,46 +18,46 @@ ranks:
 
     item:
       slot: 20
-      material: IRON_INGOT
+      material: COPPER_INGOT
       amount: 1
       glow: false
 
       claimed:
-        name: "&a&lRANK 1 &8• &aGECLAIMD"
+        name: "&#BFC5CC&lBRONZE I &8• &#BFC5CCCLAIMED"
         lore:
           - ""
-          - "&7Deze rank heb je al behaald."
+          - "&#8F98A3You already unlocked this rank."
           - ""
-          - "&a✔ Claimed"
+          - "&#BFC5CC✔ Claimed"
 
       in-progress:
-        name: "&c&lRANK 1 &8• &cIN PROGRESS"
+        name: "&#FF8A1F&lBRONZE I &8• &#BFC5CCIN PROGRESS"
         lore:
           - ""
-          - "&7Saldo: %marsrankup_requirement_money_1%"
-          - "&7Speeltijd: %marsrankup_requirement_playtime_1%"
-          - "&7Custom requirements: %marsrankup_requirement_custom_1%"
+          - "&#8F98A3Balance: &#BFC5CC%marsrankup_requirement_money_1%"
+          - "&#8F98A3Playtime: &#BFC5CC%marsrankup_requirement_playtime_1%"
+          - "&#8F98A3Custom requirements: &#BFC5CC%marsrankup_requirement_custom_1%"
           - ""
-          - "&cNog niet klaar."
+          - "&#8F98A3Complete every requirement to continue."
 
       claimable:
-        name: "&e&lRANK 1 &8• &eCLICK TO CLAIM"
+        name: "&#FF8A1F&lBRONZE I &8• &#FF8A1FCLICK TO CLAIM"
         lore:
           - ""
-          - "&aAlle requirements zijn behaald."
-          - "&eKlik om deze rank te claimen!"
+          - "&#BFC5CCAll requirements have been completed."
+          - "&#FF8A1FClick to claim this rank."
         glow: true
         actions:
           - "[SOUND] UI_BUTTON_CLICK 1 1.2"
 
     rewards:
-      - "[CONSOLE] say %player% is nu rank 1!"
+      - "[CONSOLE] say %player% has reached Bronze I!"
       - "[CONSOLE] lp user %player% parent add rank1"
-      - "[MESSAGE] &aGefeliciteerd met Rank 1!"
+      - "[MESSAGE] &#FF8A1FCongratulations! &#BFC5CCYou unlocked Bronze I."
       - "[SOUND] UI_TOAST_CHALLENGE_COMPLETE 1 1"
 
   2:
-    display-name: "&#f6d151&lRank 2"
+    display-name: "&#BFC5CC&lSilver II"
     money-required: "5k"
     playtime-required: "1d"
     permissions-required:
@@ -63,21 +67,36 @@ ranks:
 
     item:
       slot: 22
-      material: GOLD_INGOT
+      material: IRON_INGOT
+      amount: 1
+      glow: false
+
       claimed:
-        name: "&a&lRANK 2 &8• &aGECLAIMD"
-      in-progress:
-        name: "&c&lRANK 2 &8• &cIN PROGRESS"
+        name: "&#BFC5CC&lSILVER II &8• &#BFC5CCCLAIMED"
         lore:
           - ""
-          - "&7Saldo: %marsrankup_requirement_money_2%"
-          - "&7Speeltijd: %marsrankup_requirement_playtime_2%"
-          - "&7Permissions: %marsrankup_requirement_permissions_2%"
-          - "&7Custom: %marsrankup_requirement_custom_2%"
+          - "&#8F98A3You already unlocked this rank."
+
+      in-progress:
+        name: "&#BFC5CC&lSILVER II &8• &#FF8A1FIN PROGRESS"
+        lore:
+          - ""
+          - "&#8F98A3Balance: &#BFC5CC%marsrankup_requirement_money_2%"
+          - "&#8F98A3Playtime: &#BFC5CC%marsrankup_requirement_playtime_2%"
+          - "&#8F98A3Permissions: &#BFC5CC%marsrankup_requirement_permissions_2%"
+          - "&#8F98A3Custom: &#BFC5CC%marsrankup_requirement_custom_2%"
+
       claimable:
-        name: "&e&lRANK 2 &8• &eCLICK TO CLAIM"
+        name: "&#FF8A1F&lSILVER II &8• &#FF8A1FCLICK TO CLAIM"
+        lore:
+          - ""
+          - "&#BFC5CCEverything is ready."
+          - "&#FF8A1FClick to unlock Silver II."
         glow: true
+        actions:
+          - "[SOUND] UI_BUTTON_CLICK 1 1.2"
 
     rewards:
       - "[CONSOLE] lp user %player% parent add rank2"
-      - "[MESSAGE] &aRank 2 unlocked!"
+      - "[MESSAGE] &#FF8A1FCongratulations! &#BFC5CCYou unlocked Silver II."
+      - "[SOUND] UI_TOAST_CHALLENGE_COMPLETE 1 1"
