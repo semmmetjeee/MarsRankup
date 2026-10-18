@@ -36,6 +36,12 @@ settings:
   # Prints additional diagnostics to console.
   debug: false
 
+# Colors used by requirement placeholders in GUI lore.
+# The placeholder shows only the requirement value, colored by whether it is met.
+requirement-status:
+  met-color: "&a"
+  not-met-color: "&c"
+
 messages:
   # Supports legacy colors, &#RRGGBB hex colors and plugin gradients.
   prefix: "&#FF8A1F&lMarsRankup &8» &r"
@@ -54,5 +60,5 @@ messages:
   invalid-rank: "&#C0C5CERank &#FF8A1F%rank% &#C0C5CEdoes not exist."
   invalid-number: "&#C0C5CEPlease enter a valid rank number."
   player-not-found: "&#C0C5CEThat player could not be found."
-  rank-set: "&#C0C5CEThe rank of &#FF8A1F%player% &#C0C5CEwas set to &#FF8A1F%rank%&#C0C5CE."
-  rank-reset: "&#C0C5CEThe rank of &#FF8A1F%player% &#C0C5CEwas reset to &#FF8A1F%rank%&#C0C5CE."
+  rank-set: "&#C0C5CEThe rank of &#FF8A1F%player% &#C0C5CEhas been set to &#FF8A1F%rank%&#C0C5CE."
+  rank-reset: "&#C0C5CEThe rank of &#FF8A1F%player% &#C0C5CEhas been reset to &#FF8A1F%rank%&#C0C5CE."
