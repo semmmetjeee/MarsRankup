@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 public final class RankPlaceholderExpansion extends PlaceholderExpansion {
     private final MarsRankupPlugin plugin;
@@ -58,9 +59,18 @@ public final class RankPlaceholderExpansion extends PlaceholderExpansion {
         }
         if (key.startsWith("requirement_custom_")) {
             RankDefinition rank = rankFromSuffix(key, "requirement_custom_");
-            return rank == null ? "" : status(plugin.requirements().meetsCustom(player, rank), rank.customRequirements().isEmpty() ? "none" : String.valueOf(rank.customRequirements().size()));
+            if (rank == null) return "";
+            String values = rank.customRequirements().isEmpty() ? "none" : rank.customRequirements().stream()
+                    .map(RankPlaceholderExpansion::requiredValue)
+                    .collect(Collectors.joining(" / "));
+            return status(plugin.requirements().meetsCustom(player, rank), values);
         }
         return null;
+    }
+
+    private static String requiredValue(String expression) {
+        if (expression == null) return "";
+        return expression.replaceFirst("^.*?(>=|<=|==|!=|>|<)\\s*", "").trim();
     }
 
     private RankDefinition rankFromSuffix(String value, String prefix) {
@@ -68,7 +78,10 @@ public final class RankPlaceholderExpansion extends PlaceholderExpansion {
         catch (NumberFormatException ignored) { return null; }
     }
 
-    private static String status(boolean success, String requirement) {
-        return (success ? "&a✔ " : "&c✘ ") + requirement;
+    private String status(boolean success, String value) {
+        String path = success ? "requirement-status.met-color" : "requirement-status.not-met-color";
+        String fallback = success ? "&a" : "&c";
+        String color = plugin.getConfig().getString(path, fallback);
+        return (color == null ? fallback : color) + value;
     }
 }
