@@ -22,6 +22,7 @@ ranks:
       amount: 1
       glow: false
 
+      # Optional: set material here (e.g. BARRIER). If omitted, item.material above is used.
       locked:
         name: "&#FF8A1F&l??? &8• &#BFC5CCLOCKED"
         lore:
@@ -82,6 +83,7 @@ ranks:
       amount: 1
       glow: false
 
+      # Optional: set material here (e.g. BARRIER). If omitted, item.material above is used.
       locked:
         name: "&#FF8A1F&l??? &8• &#BFC5CCLOCKED"
         lore:
