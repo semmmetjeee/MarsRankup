@@ -94,6 +94,12 @@ public final class GuiManager implements Listener {
 
     private String state(Player player, RankDefinition rank) {
         if (plugin.ranks().isClaimed(player, rank.id())) return "claimed";
+
+        if (!plugin.getConfig().getBoolean("settings.allow-skipping-ranks", false)) {
+            Integer next = plugin.ranks().next(player);
+            if (next == null || next != rank.id()) return "locked";
+        }
+
         return plugin.ranks().canClaim(player, rank) ? "claimable" : "in-progress";
     }
 
@@ -161,6 +167,9 @@ public final class GuiManager implements Listener {
     private void handleRankClick(Player player, String guiId, RankSlot clicked) {
         RankDefinition rank = plugin.ranks().get(clicked.rankId());
         if (rank == null) return;
+
+        // Locked ranks are intentionally anonymous and must not reveal rank details on click.
+        if (clicked.state().equals("locked")) return;
 
         if (clicked.state().equals("claimed")) {
             plugin.actions().execute(player, clicked.actions());
