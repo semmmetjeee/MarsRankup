@@ -22,6 +22,17 @@ ranks:
       amount: 1
       glow: false
 
+      locked:
+        name: "&#FF8A1F&l??? &8• &#BFC5CCLOCKED"
+        lore:
+          - ""
+          - "&#8F98A3This rank is still locked."
+          - "&#8F98A3Unlock the previous rank first."
+          - ""
+          - "&#FF8A1F???"
+        glow: false
+        actions: []
+
       claimed:
         name: "&#BFC5CC&lBRONZE I &8• &#BFC5CCCLAIMED"
         lore:
@@ -70,6 +81,17 @@ ranks:
       material: IRON_INGOT
       amount: 1
       glow: false
+
+      locked:
+        name: "&#FF8A1F&l??? &8• &#BFC5CCLOCKED"
+        lore:
+          - ""
+          - "&#8F98A3This rank is still locked."
+          - "&#8F98A3Unlock the previous rank first."
+          - ""
+          - "&#FF8A1F???"
+        glow: false
+        actions: []
 
       claimed:
         name: "&#BFC5CC&lSILVER II &8• &#BFC5CCCLAIMED"
